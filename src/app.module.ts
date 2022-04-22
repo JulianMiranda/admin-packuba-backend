@@ -23,6 +23,8 @@ import { OrderController } from './modules/order/order.controller';
 import { ExpoService } from './services/expo.service';
 import { SendGridService } from './services/sendgrid.service';
 import { AWSService } from './services/aws.service';
+import { PromotionController } from './modules/promotion/promotion.controller';
+import { PromotionModule } from './modules/promotion/promotion.module';
 
 @Module({
   imports: [
@@ -40,6 +42,7 @@ import { AWSService } from './services/aws.service';
     SubcategoryModule,
     ShopModule,
     OrderModule,
+    PromotionModule,
   ],
   controllers: [AppController],
   providers: [FirebaseService, ExpoService, SendGridService, AWSService],
@@ -57,6 +60,7 @@ export class AppModule implements NestModule {
         SubcategoryController,
         ShopController,
         OrderController,
+        PromotionController,
       );
   }
 }

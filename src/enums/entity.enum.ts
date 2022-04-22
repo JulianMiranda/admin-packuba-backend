@@ -5,4 +5,5 @@ export enum ENTITY {
   ROLES = 'roles',
   MYSHOP = 'shop',
   ORDER = 'orders',
+  PROMOTION = 'promotions',
 }

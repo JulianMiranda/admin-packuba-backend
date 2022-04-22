@@ -9,6 +9,7 @@ import { User } from '../dto/user.dto';
 import { ENTITY } from '../enums/entity.enum';
 import { THEME } from '../enums/theme.enum';
 import { Order } from '../dto/order.dto';
+import { Promotion } from 'src/dto/promotion.dto';
 
 const checkProps = (props: string[], dataKeys: string[]) => {
   for (const key of dataKeys) {
@@ -84,12 +85,18 @@ const checkOrderProps = (data: Partial<Order>): Partial<Order> => {
   return data;
 };
 
+const checkPromotionProps = (data: Partial<Promotion>): Partial<Promotion> => {
+  const props = ['image', 'status'];
+  checkProps(props, Object.keys(data));
+  return data;
+};
 export const acceptedProps = (route: string, data: any): any => {
   if (route === ENTITY.USERS) return checkUsersProps(data);
   else if (route === ENTITY.CATEGORY) return checkCategoriesProps(data);
   else if (route === ENTITY.SUBCATEGORY) return checkSubcategoriesProps(data);
   else if (route === ENTITY.MYSHOP) return checkShopProps(data);
   else if (route === ENTITY.ORDER) return checkOrderProps(data);
+  else if (route === ENTITY.PROMOTION) return checkPromotionProps(data);
 
   throw new InternalServerErrorException('Invalid Route');
 };
