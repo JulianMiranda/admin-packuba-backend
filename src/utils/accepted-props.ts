@@ -10,6 +10,7 @@ import { ENTITY } from '../enums/entity.enum';
 import { THEME } from '../enums/theme.enum';
 import { Order } from '../dto/order.dto';
 import { Promotion } from 'src/dto/promotion.dto';
+import { Price } from '../dto/price.dto';
 
 const checkProps = (props: string[], dataKeys: string[]) => {
   for (const key of dataKeys) {
@@ -90,6 +91,24 @@ const checkPromotionProps = (data: Partial<Promotion>): Partial<Promotion> => {
   checkProps(props, Object.keys(data));
   return data;
 };
+const checkPriceProps = (data: Partial<Price>): Partial<Price> => {
+  const props = [
+    'mlc',
+    'mn',
+    'oneandhalfkgPrice',
+    'twokgPrice',
+    'threekgPrice',
+    'fourkgPrice',
+    'fivekgPrice',
+    'sixkgPrice',
+    'sevenkgPrice',
+    'eigthkgPrice',
+    'ninekgPrice',
+    'tenkgPrice',
+  ];
+  checkProps(props, Object.keys(data));
+  return data;
+};
 export const acceptedProps = (route: string, data: any): any => {
   if (route === ENTITY.USERS) return checkUsersProps(data);
   else if (route === ENTITY.CATEGORY) return checkCategoriesProps(data);
@@ -97,6 +116,6 @@ export const acceptedProps = (route: string, data: any): any => {
   else if (route === ENTITY.MYSHOP) return checkShopProps(data);
   else if (route === ENTITY.ORDER) return checkOrderProps(data);
   else if (route === ENTITY.PROMOTION) return checkPromotionProps(data);
-
+  else if (route === ENTITY.PRICE) return checkPriceProps(data);
   throw new InternalServerErrorException('Invalid Route');
 };

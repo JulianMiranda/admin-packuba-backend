@@ -26,6 +26,9 @@ import { AWSService } from './services/aws.service';
 import { PromotionController } from './modules/promotion/promotion.controller';
 import { PromotionModule } from './modules/promotion/promotion.module';
 
+import { PriceModule } from './modules/price/price.module';
+import { PriceController } from './modules/price/price.controller';
+
 @Module({
   imports: [
     MongooseModule.forRoot(MONGO_CONNECTION, {
@@ -43,6 +46,7 @@ import { PromotionModule } from './modules/promotion/promotion.module';
     ShopModule,
     OrderModule,
     PromotionModule,
+    PriceModule,
   ],
   controllers: [AppController],
   providers: [FirebaseService, ExpoService, SendGridService, AWSService],
@@ -61,6 +65,7 @@ export class AppModule implements NestModule {
         ShopController,
         OrderController,
         PromotionController,
+        PriceController,
       );
   }
 }
