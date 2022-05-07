@@ -1,6 +1,7 @@
 import { Injectable, InternalServerErrorException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
+import { Subcategory } from 'src/dto/subcategory.dto';
 import { ExpoService } from 'src/services/expo.service';
 import { FirebaseService } from 'src/services/firebase.service';
 import { flatten } from 'src/utils/util';
@@ -68,6 +69,45 @@ export class NotificationsRepository {
         body: 'Body de la not',
       },
     ); */
+  }
+
+  async subcategoryDiscount(document: Subcategory): Promise<any> {
+    const usersJUN = await this.usersDb
+      .find({ status: true }, { notificationTokens: 1 })
+      .lean();
+
+    const notificationsArray = [];
+
+    const discount =
+      (100 * (document.price - document.priceDiscount)) / document.price;
+
+    for (const user of usersJUN) {
+      notificationsArray.push({
+        user: user._id,
+        title: 'Producto en Oferta',
+        body: `Aprovecha para comprar ${document.name} ahora que están al ${discount}% de descuento 👀 `,
+        identifier: user._id,
+        notificationTokens: user.notificationTokens,
+      });
+    }
+
+    const pushNotifications = notificationsArray.map((item) => {
+      const { title, body, user } = item;
+      return item.notificationTokens.map((token: string) => ({
+        notification: {
+          title,
+          body,
+        },
+
+        token,
+        user,
+      }));
+    });
+
+    for (const batch of flatten(pushNotifications)) {
+      console.log('batch', batch);
+      AWSService.topicARN(batch.token, batch.notification);
+    }
   }
 
   async newOrder(type: NOTIFICATION, order: string): Promise<any> {

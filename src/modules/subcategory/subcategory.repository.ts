@@ -191,7 +191,9 @@ export class SubcategoryRepository {
         throw new NotFoundException(
           `Could not find subcategory to update for id: ${id}`,
         );
-
+      if (data.priceDiscount !== 0) {
+        this.notificationsRepository.subcategoryDiscount(document);
+      }
       if (data.cost) {
         this.notificationsRepository.testAWS();
       }
