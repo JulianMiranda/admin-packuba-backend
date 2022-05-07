@@ -201,6 +201,9 @@ export class SubcategoryRepository {
       if (data.priceDiscount !== 0) {
         this.notificationsRepository.subcategoryDiscount(document);
       }
+      if (data.priceGaloreDiscount !== 0) {
+        this.notificationsRepository.subcategoryDiscount(document);
+      }
       if (data.cost) {
         this.notificationsRepository.testAWS();
       }
