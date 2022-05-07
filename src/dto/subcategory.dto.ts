@@ -31,6 +31,9 @@ export class Subcategory extends Document {
   priceGalore: number;
 
   @IsNumber()
+  priceGaloreDiscount: number;
+
+  @IsNumber()
   priceDiscount: number;
 
   @IsString()

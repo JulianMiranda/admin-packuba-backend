@@ -64,6 +64,7 @@ const checkSubcategoriesProps = (
     'price',
     'priceGalore',
     'priceDiscount',
+    'priceGaloreDiscount',
     'currency',
     'deleteImages',
     'weight',

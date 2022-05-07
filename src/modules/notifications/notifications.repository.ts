@@ -84,7 +84,7 @@ export class NotificationsRepository {
     for (const user of usersJUN) {
       notificationsArray.push({
         user: user._id,
-        title: 'Producto en Oferta',
+        title: `${document.name} en Oferta `,
         body: `Aprovecha para comprar ${document.name} ahora que están al ${discount}% de descuento 👀 `,
         identifier: user._id,
         notificationTokens: user.notificationTokens,

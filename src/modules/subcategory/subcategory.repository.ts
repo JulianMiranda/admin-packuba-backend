@@ -35,6 +35,13 @@ export class SubcategoryRepository {
           .populate(population),
       ]);
       const totalPages = limit !== 0 ? Math.floor(count / limit) : 1;
+      /* const subcategoriesAll = await this.subcategoryDb.find().exec();
+       subcategoriesAll.forEach(async (element) => {
+        await this.subcategoryDb
+          .findByIdAndUpdate(element.id, { priceGaloreDiscount: 0 })
+          .exec();
+      }); */
+
       return { count, page, totalPages, data: subcategories };
     } catch (e) {
       throw new InternalServerErrorException(
