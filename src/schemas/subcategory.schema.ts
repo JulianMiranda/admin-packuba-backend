@@ -13,6 +13,7 @@ const SubcategorySchema = new mongoose.Schema(
     cost: { type: Number, default: 0 },
     price: { type: Number, default: 0 },
     priceGalore: { type: Number, default: 0 },
+    priceDiscount: { type: Number, default: 0 },
     weight: { type: Number, default: 1 },
     stock: { type: Number, default: 0 },
     aviableSizes: [],

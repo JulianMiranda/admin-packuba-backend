@@ -25,7 +25,6 @@ export class SubcategoryRepository {
   async getList(query: MongoQuery): Promise<any> {
     try {
       const { filter, projection, sort, limit, skip, page, population } = query;
-      console.log(population);
       const [count, subcategories] = await Promise.all([
         this.subcategoryDb.countDocuments(filter),
         this.subcategoryDb

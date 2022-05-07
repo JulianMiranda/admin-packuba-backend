@@ -30,6 +30,9 @@ export class Subcategory extends Document {
   @IsNumber()
   priceGalore: number;
 
+  @IsNumber()
+  priceDiscount: number;
+
   @IsString()
   currency: string;
 
