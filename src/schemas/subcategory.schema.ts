@@ -18,6 +18,7 @@ const SubcategorySchema = new mongoose.Schema(
     weight: { type: Number, default: 1 },
     stock: { type: Number, default: 0 },
     aviableSizes: [],
+    aviableColors: [],
     currency: { type: String, default: 'USD' },
     images: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Image' }],
     status: { type: Boolean, default: true, index: true },

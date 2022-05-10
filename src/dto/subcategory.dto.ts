@@ -44,4 +44,7 @@ export class Subcategory extends Document {
 
   @IsArray()
   aviableSizes: string[];
+
+  @IsArray()
+  aviableColors: string[];
 }
