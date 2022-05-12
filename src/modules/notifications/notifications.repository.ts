@@ -20,7 +20,17 @@ export class NotificationsRepository {
 
   async testAWS(): Promise<any> {
     const usersJUN = await this.usersDb
-      .find({ status: true }, { notificationTokens: 1 })
+      .find(
+        {
+          $expr: {
+            $and: [
+              { $eq: ['$status', true] },
+              { $eq: ['$reciveNotifications', true] },
+            ],
+          },
+        },
+        { notificationTokens: 1 },
+      )
       .lean();
 
     const notificationsArray = [];
@@ -73,7 +83,17 @@ export class NotificationsRepository {
 
   async subcategoryDiscount(document: Subcategory): Promise<any> {
     const usersJUN = await this.usersDb
-      .find({ status: true }, { notificationTokens: 1 })
+      .find(
+        {
+          $expr: {
+            $and: [
+              { $eq: ['$status', true] },
+              { $eq: ['$reciveNotifications', true] },
+            ],
+          },
+        },
+        { notificationTokens: 1 },
+      )
       .lean();
 
     const notificationsArray = [];

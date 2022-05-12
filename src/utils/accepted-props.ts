@@ -35,6 +35,7 @@ const checkUsersProps = (data: Partial<User>): Partial<User> => {
     'theme',
     'phone',
     'authorized',
+    'reciveNotifications',
   ];
   const { role, theme } = data;
   if (role && !['ADMIN', 'JUN', 'CUN'].includes(role))

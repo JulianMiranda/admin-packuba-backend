@@ -31,6 +31,7 @@ export class AuthRepository {
             image: true,
             theme: true,
             phone: true,
+            reciveNotifications: true,
           })
           .populate([
             {
@@ -74,6 +75,7 @@ export class AuthRepository {
           role: true,
           theme: true,
           phone: true,
+          reciveNotifications: true,
         })
         .populate([
           {
