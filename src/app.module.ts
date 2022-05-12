@@ -28,6 +28,8 @@ import { PromotionModule } from './modules/promotion/promotion.module';
 
 import { PriceModule } from './modules/price/price.module';
 import { PriceController } from './modules/price/price.controller';
+import { CarnetModule } from './modules/carnet/carnet.module';
+import { CarnetController } from './modules/carnet/carnet.controller';
 
 @Module({
   imports: [
@@ -47,6 +49,7 @@ import { PriceController } from './modules/price/price.controller';
     OrderModule,
     PromotionModule,
     PriceModule,
+    CarnetModule,
   ],
   controllers: [AppController],
   providers: [FirebaseService, ExpoService, SendGridService, AWSService],
@@ -66,6 +69,7 @@ export class AppModule implements NestModule {
         OrderController,
         PromotionController,
         PriceController,
+        CarnetController,
       );
   }
 }

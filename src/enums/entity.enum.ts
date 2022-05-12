@@ -7,4 +7,5 @@ export enum ENTITY {
   ORDER = 'orders',
   PROMOTION = 'promotions',
   PRICE = 'prices',
+  CARNET = 'carnets',
 }
