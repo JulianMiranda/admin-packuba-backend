@@ -84,6 +84,7 @@ const checkSubcategoriesProps = (
     'stock',
     'aviableSizes',
     'aviableColors',
+    'soldOut',
   ];
   checkProps(props, Object.keys(data));
   return data;
