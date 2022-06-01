@@ -76,7 +76,7 @@ const checkPromotionProps = (data: Partial<Promotion>): Partial<Promotion> => {
 const checkPromotionFinalProps = (
   data: Partial<PromotionFinal>,
 ): Partial<PromotionFinal> => {
-  const props = ['images'];
+  const props = ['image'];
   const dataCopy = prepareProps(props, { ...data });
   checkNullOrUndefined(props, dataCopy);
   return data;
