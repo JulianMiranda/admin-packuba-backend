@@ -18,7 +18,7 @@ import { RequiredProps } from '../../pipes/required-props.pipe';
 import { TransformQuery } from '../../pipes/transform-query.pipe';
 import { PromotionFinalRepository } from './promotionFinal.repository';
 
-@Controller(ENTITY.PROMOTION)
+@Controller(ENTITY.PROMOTIONFINAL)
 export class PromotionFinalController {
   constructor(private promotionFinalRepository: PromotionFinalRepository) {}
 
@@ -36,7 +36,7 @@ export class PromotionFinalController {
   }
   @UseGuards(AuthenticationGuard)
   @Post('/create')
-  @UsePipes(new RequiredProps(ENTITY.PROMOTION))
+  @UsePipes(new RequiredProps(ENTITY.PROMOTIONFINAL))
   create(@Body() data: PromotionFinal): Promise<boolean> {
     const { image } = data;
     delete data.image;
@@ -45,7 +45,7 @@ export class PromotionFinalController {
 
   @UseGuards(AuthenticationGuard)
   @Put('/update/:id')
-  @UsePipes(new AcceptedProps(ENTITY.PROMOTION))
+  @UsePipes(new AcceptedProps(ENTITY.PROMOTIONFINAL))
   update(
     @Param('id') id: string,
     @Body() data: Partial<PromotionFinal>,
