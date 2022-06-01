@@ -53,6 +53,10 @@ export class PromotionFinalRepository {
             match: { status: true },
             select: { url: true },
           },
+          {
+            path: 'subcategory',
+            select: { name: true },
+          },
         ]);
 
       if (!document)
