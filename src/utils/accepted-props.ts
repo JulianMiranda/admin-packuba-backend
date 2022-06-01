@@ -12,6 +12,7 @@ import { Order } from '../dto/order.dto';
 import { Promotion } from 'src/dto/promotion.dto';
 import { Price } from '../dto/price.dto';
 import { Carnet } from 'src/dto/carnet.dto';
+import { PromotionFinal } from 'src/dto/promotionFinal.dto';
 
 const checkProps = (props: string[], dataKeys: string[]) => {
   for (const key of dataKeys) {
@@ -51,6 +52,14 @@ const checkUsersProps = (data: Partial<User>): Partial<User> => {
 
 const checkCategoriesProps = (data: Partial<Category>): Partial<Category> => {
   const props = ['name', 'status', 'image'];
+  checkProps(props, Object.keys(data));
+  return data;
+};
+
+const checkPromotionFinalProps = (
+  data: Partial<PromotionFinal>,
+): Partial<PromotionFinal> => {
+  const props = ['image', 'status', 'subcategory'];
   checkProps(props, Object.keys(data));
   return data;
 };
@@ -137,6 +146,8 @@ export const acceptedProps = (route: string, data: any): any => {
   else if (route === ENTITY.MYSHOP) return checkShopProps(data);
   else if (route === ENTITY.ORDER) return checkOrderProps(data);
   else if (route === ENTITY.PROMOTION) return checkPromotionProps(data);
+  else if (route === ENTITY.PROMOTIONFINAL)
+    return checkPromotionFinalProps(data);
   else if (route === ENTITY.PRICE) return checkPriceProps(data);
   else if (route === ENTITY.CARNET) return checkCarnetProps(data);
   throw new InternalServerErrorException('Invalid Route');

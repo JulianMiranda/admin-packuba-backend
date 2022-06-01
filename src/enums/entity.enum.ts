@@ -6,6 +6,7 @@ export enum ENTITY {
   MYSHOP = 'shop',
   ORDER = 'orders',
   PROMOTION = 'promotions',
+  PROMOTIONFINAL = 'promotionsFinal',
   PRICE = 'prices',
   CARNET = 'carnets',
 }

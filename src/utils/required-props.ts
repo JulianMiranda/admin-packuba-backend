@@ -9,6 +9,7 @@ import { ENTITY } from '../enums/entity.enum';
 import { Order } from '../dto/order.dto';
 import { Promotion } from 'src/dto/promotion.dto';
 import { Carnet } from 'src/dto/carnet.dto';
+import { PromotionFinal } from 'src/dto/promotionFinal.dto';
 
 const prepareProps = (props: string[], data: any) => {
   for (const key of Object.keys(data)) {
@@ -72,6 +73,15 @@ const checkPromotionProps = (data: Partial<Promotion>): Partial<Promotion> => {
   return data;
 };
 
+const checkPromotionFinalProps = (
+  data: Partial<PromotionFinal>,
+): Partial<PromotionFinal> => {
+  const props = ['images'];
+  const dataCopy = prepareProps(props, { ...data });
+  checkNullOrUndefined(props, dataCopy);
+  return data;
+};
+
 const checkCarnetProps = (data: Partial<Carnet>): Partial<Carnet> => {
   const props = [
     'name',
@@ -93,6 +103,7 @@ export const requiredProps = (route: string, data: any): any => {
   if (route === ENTITY.MYSHOP) return checkShopProps(data);
   if (route === ENTITY.ORDER) return checkOrderProps(data);
   if (route === ENTITY.PROMOTION) return checkPromotionProps(data);
+  if (route === ENTITY.PROMOTIONFINAL) return checkPromotionFinalProps(data);
   if (route === ENTITY.CARNET) return checkCarnetProps(data);
 
   throw new InternalServerErrorException('Invalid Route');

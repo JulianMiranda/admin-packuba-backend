@@ -30,6 +30,8 @@ import { PriceModule } from './modules/price/price.module';
 import { PriceController } from './modules/price/price.controller';
 import { CarnetModule } from './modules/carnet/carnet.module';
 import { CarnetController } from './modules/carnet/carnet.controller';
+import { PromotionFinalModule } from './modules/promotionFinal/promotionFinal.module';
+import { PromotionFinalController } from './modules/promotionFinal/promotionFinal.controller';
 
 @Module({
   imports: [
@@ -48,6 +50,7 @@ import { CarnetController } from './modules/carnet/carnet.controller';
     ShopModule,
     OrderModule,
     PromotionModule,
+    PromotionFinalModule,
     PriceModule,
     CarnetModule,
   ],
@@ -68,6 +71,7 @@ export class AppModule implements NestModule {
         ShopController,
         OrderController,
         PromotionController,
+        PromotionFinalController,
         PriceController,
         CarnetController,
       );

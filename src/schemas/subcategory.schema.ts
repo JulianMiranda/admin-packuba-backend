@@ -22,6 +22,7 @@ const SubcategorySchema = new mongoose.Schema(
     currency: { type: String, default: 'USD' },
     images: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Image' }],
     status: { type: Boolean, default: true, index: true },
+    soldOut: { type: Boolean, default: false, index: true },
   },
   { ...schemaOptions },
 );
