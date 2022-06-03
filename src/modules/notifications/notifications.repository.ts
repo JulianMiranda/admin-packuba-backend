@@ -7,6 +7,7 @@ import { FirebaseService } from 'src/services/firebase.service';
 import { flatten } from 'src/utils/util';
 import { Order } from '../../dto/order.dto';
 import { User } from '../../dto/user.dto';
+import { Price } from '../../dto/price.dto';
 import { NOTIFICATION } from '../../enums/notification.enum';
 import { AWSService } from '../../services/aws.service';
 
@@ -18,7 +19,7 @@ export class NotificationsRepository {
     @InjectModel('Order') private orderDb: Model<Order>,
   ) {}
 
-  async testAWS(): Promise<any> {
+  async createdProduct(subcategory: Subcategory): Promise<any> {
     const usersJUN = await this.usersDb
       .find(
         {
@@ -38,8 +39,8 @@ export class NotificationsRepository {
     for (const user of usersJUN) {
       notificationsArray.push({
         user: user._id,
-        title: 'Producto Actualizado',
-        body: `El PRoducto Tal ha sido Actualizado`,
+        title: 'Para ti',
+        body: `${subcategory.name} disponible en la tienda`,
         identifier: user._id,
         notificationTokens: user.notificationTokens,
       });
@@ -97,15 +98,23 @@ export class NotificationsRepository {
       .lean();
 
     const notificationsArray = [];
+    /*   const discount =
+    priceGaloreDiscount && priceGaloreDiscount !== 0
+      ? (100 * (priceGalore - priceGaloreDiscount)) / priceGalore
+      : (100 * (price - priceDiscount)) / price;
+ */
 
     const discount =
-      (100 * (document.price - document.priceDiscount)) / document.price;
+      document.priceGaloreDiscount && document.priceGaloreDiscount !== 0
+        ? (100 * (document.priceGalore - document.priceGaloreDiscount)) /
+          document.priceGalore
+        : (100 * (document.price - document.priceDiscount)) / document.price;
 
     for (const user of usersJUN) {
       notificationsArray.push({
         user: user._id,
-        title: `${document.name} en Oferta `,
-        body: `Aprovecha para comprar ${document.name} ahora que están al ${discount}% de descuento 👀 `,
+        title: `${document.name} en Rebaja!! `,
+        body: `Cómpralo con ${discount.toFixed(0)}% de descuento`,
         identifier: user._id,
         notificationTokens: user.notificationTokens,
       });
@@ -150,7 +159,7 @@ export class NotificationsRepository {
         notificationsArray.push({
           user: user._id,
           title: 'Nueva Orden',
-          body: `Nueva orden para el 🧑 Wata ${orderDB.cost} $`,
+          body: `Nueva orden de ${user.phone} $`,
           type,
           identifier: orderDB._id,
           notificationTokens: user.notificationTokens,
@@ -171,6 +180,8 @@ export class NotificationsRepository {
           to: token,
         }));
       }); */
+
+      
       const pushNotifications = notificationsArray.map((item) => {
         const { title, email, user, body } = item;
         return item.notificationTokens.map((token: string) => ({
@@ -182,8 +193,20 @@ export class NotificationsRepository {
           token,
         }));
       });
+      for (const batch of flatten(pushNotifications)) {
+        console.log('batch', batch);
+        AWSService.topicARN(batch.token, batch.notification);
+  
+        /* AWSService.topicARN(
+          'dnWoy_m_QwO4RynUsRMTqC:APA91bEZIEVb65UhhMYk6OauBJMw_v9MDUPAdovxZ8_gYS6UdgUGaDQTvB5vuXTaDAzkpsSoO-rLwL2bYg4UY-4F-sxUnFUlGvs8k0AFf_S2-HmVpDEvzNHQ3E0r0gW1txX0Yt9tHqQT',
+          {
+            title: 'Titulo Not',
+            body: 'Body de la not',
+          },
+        ); */
+      }
 
-      FirebaseService.sendPushNotifications(flatten(pushNotifications));
+      //FirebaseService.sendPushNotifications(flatten(pushNotifications));
       // ExpoService.sendExpoPushNotifications(flatten(pushNotifications));
     } catch (e) {
       throw new InternalServerErrorException(
@@ -192,4 +215,68 @@ export class NotificationsRepository {
       );
     }
   }
+
+  async updateEnvio(precios: Price): Promise<any> {
+    const usersJUN = await this.usersDb
+      .find(
+        {
+          $expr: {
+            $and: [
+              { $eq: ['$status', true] },
+              { $eq: ['$reciveNotifications', true] },
+            ],
+          },
+        },
+        { notificationTokens: 1 },
+      )
+      .lean();
+
+    const notificationsArray = [];
+
+    for (const user of usersJUN) {
+      notificationsArray.push({
+        user: user._id,
+        title: 'Nuevos precios de envío',
+        body: `Envía tus compras desde ${precios.oneandhalfkgPrice}`,
+        identifier: user._id,
+        notificationTokens: user.notificationTokens,
+      });
+    }
+
+    const pushNotifications = notificationsArray.map((item) => {
+      const { title, body, user } = item;
+      return item.notificationTokens.map((token: string) => ({
+        notification: {
+          title,
+          body,
+        },
+
+        token,
+        user,
+      }));
+    });
+
+    console.log(flatten(pushNotifications));
+
+    for (const batch of flatten(pushNotifications)) {
+      console.log('batch', batch);
+      AWSService.topicARN(batch.token, batch.notification);
+
+      /* AWSService.topicARN(
+        'dnWoy_m_QwO4RynUsRMTqC:APA91bEZIEVb65UhhMYk6OauBJMw_v9MDUPAdovxZ8_gYS6UdgUGaDQTvB5vuXTaDAzkpsSoO-rLwL2bYg4UY-4F-sxUnFUlGvs8k0AFf_S2-HmVpDEvzNHQ3E0r0gW1txX0Yt9tHqQT',
+        {
+          title: 'Titulo Not',
+          body: 'Body de la not',
+        },
+      ); */
+    }
+    /* AWSService.topicARN(
+      'dnWoy_m_QwO4RynUsRMTqC:APA91bEZIEVb65UhhMYk6OauBJMw_v9MDUPAdovxZ8_gYS6UdgUGaDQTvB5vuXTaDAzkpsSoO-rLwL2bYg4UY-4F-sxUnFUlGvs8k0AFf_S2-HmVpDEvzNHQ3E0r0gW1txX0Yt9tHqQT',
+      {
+        title: 'Titulo Not',
+        body: 'Body de la not',
+      },
+    ); */
+  }
+  
 }

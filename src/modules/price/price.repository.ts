@@ -8,12 +8,16 @@ import { Model } from 'mongoose';
 import { Price } from '../../dto/price.dto';
 import { MongoQuery } from '../../dto/mongo-query.dto';
 import { ENTITY } from '../../enums/entity.enum';
+import { NotificationsRepository } from '../notifications/notifications.repository';
 
 @Injectable()
 export class PriceRepository {
   readonly type = ENTITY.PRICE;
 
-  constructor(@InjectModel('Price') private priceDb: Model<Price>) {}
+  constructor(
+    @InjectModel('Price') private priceDb: Model<Price>,
+    private notificationsRepository: NotificationsRepository,
+  ) {}
 
   async getPrices(): Promise<any> {
     try {
@@ -35,6 +39,8 @@ export class PriceRepository {
 
       if (!document)
         throw new NotFoundException(`Could not find price to update`);
+      const price = await this.getPrices();
+      this.notificationsRepository.createdProduct(price);
 
       return !!document;
     } catch (e) {

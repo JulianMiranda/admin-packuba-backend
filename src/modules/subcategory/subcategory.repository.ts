@@ -136,7 +136,9 @@ export class SubcategoryRepository {
           { images: newImages },
           { new: true },
         );
-
+        if (subcategory) {
+          this.notificationsRepository.createdProduct(subcategory);
+        }
         return !!subcategory;
       }
     } catch (e) {
@@ -204,9 +206,9 @@ export class SubcategoryRepository {
       if (data.priceGaloreDiscount && data.priceGaloreDiscount !== 0) {
         this.notificationsRepository.subcategoryDiscount(document);
       }
-      if (data.cost) {
-        this.notificationsRepository.testAWS();
-      }
+      /*  if (data.cost) {
+        this.notificationsRepository.createdProduct();
+      } */
 
       return !!document;
     } catch (e) {
