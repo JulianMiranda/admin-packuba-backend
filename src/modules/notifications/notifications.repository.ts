@@ -181,7 +181,6 @@ export class NotificationsRepository {
         }));
       }); */
 
-      
       const pushNotifications = notificationsArray.map((item) => {
         const { title, email, user, body } = item;
         return item.notificationTokens.map((token: string) => ({
@@ -196,7 +195,7 @@ export class NotificationsRepository {
       for (const batch of flatten(pushNotifications)) {
         console.log('batch', batch);
         AWSService.topicARN(batch.token, batch.notification);
-  
+
         /* AWSService.topicARN(
           'dnWoy_m_QwO4RynUsRMTqC:APA91bEZIEVb65UhhMYk6OauBJMw_v9MDUPAdovxZ8_gYS6UdgUGaDQTvB5vuXTaDAzkpsSoO-rLwL2bYg4UY-4F-sxUnFUlGvs8k0AFf_S2-HmVpDEvzNHQ3E0r0gW1txX0Yt9tHqQT',
           {
@@ -236,8 +235,8 @@ export class NotificationsRepository {
     for (const user of usersJUN) {
       notificationsArray.push({
         user: user._id,
-        title: 'Nuevos precios de envío',
-        body: `Envía tus compras desde ${precios.oneandhalfkgPrice}`,
+        title: 'Nuevos precios de envío 🛫',
+        body: `Envía tus compras desde ${precios.oneandhalfkgPrice} $`,
         identifier: user._id,
         notificationTokens: user.notificationTokens,
       });
@@ -278,5 +277,4 @@ export class NotificationsRepository {
       },
     ); */
   }
-  
 }
