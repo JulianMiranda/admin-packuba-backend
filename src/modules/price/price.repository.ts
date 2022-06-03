@@ -40,7 +40,7 @@ export class PriceRepository {
       if (!document)
         throw new NotFoundException(`Could not find price to update`);
       const price = await this.getPrices();
-      this.notificationsRepository.updateEnvio(price);
+      this.notificationsRepository.updateEnvio(document[0]);
 
       return !!document;
     } catch (e) {
