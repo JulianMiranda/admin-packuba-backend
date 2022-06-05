@@ -39,8 +39,8 @@ export class NotificationsRepository {
     for (const user of usersJUN) {
       notificationsArray.push({
         user: user._id,
-        title: 'Para ti',
-        body: `${subcategory.name} disponible en la tienda`,
+        title: 'Para ti 💙',
+        body: `${subcategory.name} disponible en la tienda 🛒`,
         identifier: user._id,
         notificationTokens: user.notificationTokens,
       });
@@ -114,7 +114,7 @@ export class NotificationsRepository {
       notificationsArray.push({
         user: user._id,
         title: `${document.name} en Rebaja!! `,
-        body: `Cómpralo con ${discount.toFixed(0)}% de descuento`,
+        body: ` ☝ Cómpralo con ${discount.toFixed(0)}% de descuento`,
         identifier: user._id,
         notificationTokens: user.notificationTokens,
       });
