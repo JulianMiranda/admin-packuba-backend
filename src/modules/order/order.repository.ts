@@ -48,13 +48,8 @@ export class OrderRepository {
     try {
       const document = await this.orderDb.findOne({ _id: id }).populate([
         {
-          path: 'user',
-          select: { name: true, phone: true },
-        },
-        {
           path: 'selectedCarnet',
-          select:
-          {
+          select: {
             name: true,
             firstLastName: true,
             secondLastName: true,
@@ -70,8 +65,13 @@ export class OrderRepository {
             provincia: true,
             phoneNumber: true,
             status: true,
-          }
-        }
+          },
+          options: { sort: { updatedAt: 1 } },
+        },
+        {
+          path: 'user',
+          select: { name: true, phone: true },
+        },
       ]);
 
       if (!document)

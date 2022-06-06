@@ -8,6 +8,9 @@ export const OrderSchema = new mongoose.Schema(
     car: [],
     cost: Number,
     currency: { type: String, default: 'USD' },
+    selectedCarnet: [
+      { type: mongoose.Schema.Types.ObjectId, ref: 'Carnet', index: true },
+    ],
     /* car: [
       {
         cantidad: Number,
