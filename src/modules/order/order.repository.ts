@@ -51,6 +51,27 @@ export class OrderRepository {
           path: 'user',
           select: { name: true, phone: true },
         },
+        {
+          path: 'selectedCarnet',
+          select:
+          {
+            name: true,
+            firstLastName: true,
+            secondLastName: true,
+            carnet: true,
+            address: true,
+            deparment: true,
+            floor: true,
+            number: true,
+            firstAccross: true,
+            secondAccross: true,
+            reparto: true,
+            municipio: true,
+            provincia: true,
+            phoneNumber: true,
+            status: true,
+          }
+        }
       ]);
 
       if (!document)
