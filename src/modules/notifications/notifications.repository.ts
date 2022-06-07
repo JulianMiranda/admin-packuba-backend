@@ -2,8 +2,6 @@ import { Injectable, InternalServerErrorException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { Subcategory } from 'src/dto/subcategory.dto';
-import { ExpoService } from 'src/services/expo.service';
-import { FirebaseService } from 'src/services/firebase.service';
 import { flatten } from 'src/utils/util';
 import { Order } from '../../dto/order.dto';
 import { User } from '../../dto/user.dto';
@@ -42,18 +40,22 @@ export class NotificationsRepository {
         title: 'Para ti 💙',
         body: `${subcategory.name} disponible en la tienda 🛒`,
         identifier: user._id,
+        data: {
+          subcategory: subcategory.toString(),
+          click_action: 'SUBCATEGORY_NOTIFICATION_CLICK',
+        },
         notificationTokens: user.notificationTokens,
       });
     }
 
     const pushNotifications = notificationsArray.map((item) => {
-      const { title, body, user } = item;
+      const { title, body, user, data } = item;
       return item.notificationTokens.map((token: string) => ({
         notification: {
           title,
           body,
+          data,
         },
-
         token,
         user,
       }));
@@ -115,17 +117,22 @@ export class NotificationsRepository {
         user: user._id,
         title: `${document.name} en Rebaja!! `,
         body: ` ☝ Cómpralo con ${discount.toFixed(0)}% de descuento`,
+        data: {
+          subcategory: document.toString(),
+          click_action: 'SUBCATEGORY_NOTIFICATION_CLICK',
+        },
         identifier: user._id,
         notificationTokens: user.notificationTokens,
       });
     }
 
     const pushNotifications = notificationsArray.map((item) => {
-      const { title, body, user } = item;
+      const { title, body, data, user } = item;
       return item.notificationTokens.map((token: string) => ({
         notification: {
           title,
           body,
+          data,
         },
 
         token,
@@ -237,6 +244,9 @@ export class NotificationsRepository {
         user: user._id,
         title: 'Nuevos precios de envío 🛫',
         body: `Envía tus compras desde ${precios.oneandhalfkgPrice} $`,
+        data: {
+          click_action: 'UPDATE_ENVIO_NOTIFICATION_CLICK',
+        },
         identifier: user._id,
         notificationTokens: user.notificationTokens,
       });

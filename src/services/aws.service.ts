@@ -72,7 +72,7 @@ export class AWSService {
 
   // Send SNS message to a topic
   static async topicARN(token: string, notification): Promise<any> {
-    const { title, body } = notification;
+    const { title, body, data } = notification;
     console.log('Not', title, body);
     const sns = new AWS.SNS({
       apiVersion: AWS_API_VERSION,
@@ -88,7 +88,9 @@ export class AWSService {
         title +
         '", "body":' +
         JSON.stringify(body) +
-        '} }',
+        '}, "data":' +
+        JSON.stringify(data) +
+        '}',
     };
     /*  const message = {
       GCM:
