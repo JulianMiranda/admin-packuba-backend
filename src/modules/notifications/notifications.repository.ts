@@ -41,7 +41,7 @@ export class NotificationsRepository {
         body: `${subcategory.name} disponible en la tienda 🛒`,
         identifier: user._id,
         data: {
-          subcategory: subcategory.toString(),
+          subcategory: subcategory._id.toString(),
           click_action: 'SUBCATEGORY_NOTIFICATION_CLICK',
         },
         notificationTokens: user.notificationTokens,
@@ -118,7 +118,7 @@ export class NotificationsRepository {
         title: `${document.name} en Rebaja!! `,
         body: ` ☝ Cómpralo con ${discount.toFixed(0)}% de descuento`,
         data: {
-          subcategory: document.toString(),
+          subcategory: document._id.toString(),
           click_action: 'SUBCATEGORY_NOTIFICATION_CLICK',
         },
         identifier: user._id,
