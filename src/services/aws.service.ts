@@ -81,7 +81,9 @@ export class AWSService {
       region: AWS_REGION,
     });
     const resp = await AWSService.registerDevice(token);
-    console.log(resp);
+    const tokn =
+      'cDNbeFpxRMmIbDUZllqsUR:APA91bGy9yzNYiV8_mJkcpL0_tixazpprxc-RSgO4FKLciVG9g3fjgELw1JP0zSI9THTSmRNI55T_60TyQdzjNo4juRGDPScpsSpyHtXPCMQ-TIP8IgwYFBCy2vIX4lAPwPyVxQfvvP0';
+
     const message = {
       GCM:
         '{"notification": { "title":"' +
@@ -92,6 +94,7 @@ export class AWSService {
         JSON.stringify(data) +
         '}',
     };
+    console.log(message);
     /*  const message = {
       GCM:
         '{"notification": { "title": "Titlulo Not", "body": "Cuerpo de la Notificacion" } }',

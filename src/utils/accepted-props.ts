@@ -59,7 +59,7 @@ const checkCategoriesProps = (data: Partial<Category>): Partial<Category> => {
 const checkPromotionFinalProps = (
   data: Partial<PromotionFinal>,
 ): Partial<PromotionFinal> => {
-  const props = ['image', 'status', 'subcategory'];
+  const props = ['image', 'status', 'subcategory', 'owner'];
   checkProps(props, Object.keys(data));
   return data;
 };
@@ -102,7 +102,7 @@ const checkOrderProps = (data: Partial<Order>): Partial<Order> => {
 };
 
 const checkPromotionProps = (data: Partial<Promotion>): Partial<Promotion> => {
-  const props = ['image', 'status'];
+  const props = ['image', 'status', 'owner'];
   checkProps(props, Object.keys(data));
   return data;
 };

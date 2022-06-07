@@ -238,7 +238,6 @@ export class NotificationsRepository {
       .lean();
 
     const notificationsArray = [];
-
     for (const user of usersJUN) {
       notificationsArray.push({
         user: user._id,
@@ -253,11 +252,12 @@ export class NotificationsRepository {
     }
 
     const pushNotifications = notificationsArray.map((item) => {
-      const { title, body, user } = item;
+      const { title, body, user, data } = item;
       return item.notificationTokens.map((token: string) => ({
         notification: {
           title,
           body,
+          data,
         },
 
         token,
@@ -268,7 +268,6 @@ export class NotificationsRepository {
     console.log(flatten(pushNotifications));
 
     for (const batch of flatten(pushNotifications)) {
-      console.log('batch', batch);
       AWSService.topicARN(batch.token, batch.notification);
 
       /* AWSService.topicARN(
