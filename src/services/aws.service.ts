@@ -81,8 +81,6 @@ export class AWSService {
       region: AWS_REGION,
     });
     const resp = await AWSService.registerDevice(token);
-    const tokn =
-      'cDNbeFpxRMmIbDUZllqsUR:APA91bGy9yzNYiV8_mJkcpL0_tixazpprxc-RSgO4FKLciVG9g3fjgELw1JP0zSI9THTSmRNI55T_60TyQdzjNo4juRGDPScpsSpyHtXPCMQ-TIP8IgwYFBCy2vIX4lAPwPyVxQfvvP0';
 
     const message = {
       GCM:
