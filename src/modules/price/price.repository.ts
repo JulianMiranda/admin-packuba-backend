@@ -35,11 +35,12 @@ export class PriceRepository {
       await this.priceDb.findOneAndUpdate(
         { _id: document[0]._id },
         { ...data },
+        { new: true },
       );
 
       if (!document)
         throw new NotFoundException(`Could not find price to update`);
-      const price = await this.getPrices();
+
       this.notificationsRepository.updateEnvio(document[0]);
 
       return !!document;
