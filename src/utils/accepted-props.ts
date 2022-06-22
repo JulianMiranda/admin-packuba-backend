@@ -110,8 +110,16 @@ const checkPromotionProps = (data: Partial<Promotion>): Partial<Promotion> => {
 const checkCarnetProps = (data: Partial<Carnet>): Partial<Carnet> => {
   const props = [
     'name',
+    'firstLastName',
+    'secondLastName',
     'carnet',
     'address',
+    'deparment',
+    'floor',
+    'number',
+    'firstAccross',
+    'secondAccross',
+    'reparto',
     'municipio',
     'provincia',
     'phoneNumber',
