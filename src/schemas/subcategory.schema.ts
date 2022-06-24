@@ -23,6 +23,7 @@ const SubcategorySchema = new mongoose.Schema(
     images: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Image' }],
     status: { type: Boolean, default: true, index: true },
     soldOut: { type: Boolean, default: false, index: true },
+    recentProduct: { type: Date, default: new Date(), index: true },
   },
   { ...schemaOptions },
 );

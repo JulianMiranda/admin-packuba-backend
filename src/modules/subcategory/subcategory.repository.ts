@@ -36,9 +36,9 @@ export class SubcategoryRepository {
       ]);
       const totalPages = limit !== 0 ? Math.floor(count / limit) : 1;
       /* const subcategoriesAll = await this.subcategoryDb.find().exec();
-       subcategoriesAll.forEach(async (element) => {
+      subcategoriesAll.forEach(async (element) => {
         await this.subcategoryDb
-          .findByIdAndUpdate(element.id, { priceGaloreDiscount: 0 })
+          .findByIdAndUpdate(element.id, { recentProduct: element.createdAt })
           .exec();
       }); */
 
@@ -206,9 +206,16 @@ export class SubcategoryRepository {
       if (data.priceGaloreDiscount && data.priceGaloreDiscount !== 0) {
         this.notificationsRepository.subcategoryDiscount(document);
       }
-      /*  if (data.cost) {
-        this.notificationsRepository.createdProduct();
-      } */
+
+      if (data.hasOwnProperty('soldOut') && !data.soldOut) {
+        console.log('Tiene la propiedad soldOut y es falso');
+        this.notificationsRepository.finishSoldOut(document);
+        await this.subcategoryDb.findOneAndUpdate(
+          { _id: id },
+          { recentProduct: new Date() },
+          { new: true },
+        );
+      }
 
       return !!document;
     } catch (e) {

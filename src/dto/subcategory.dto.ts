@@ -1,4 +1,10 @@
-import { IsString, IsNumber, IsArray } from 'class-validator';
+import {
+  IsString,
+  IsNumber,
+  IsArray,
+  IsBoolean,
+  IsDate,
+} from 'class-validator';
 import { Document } from 'mongoose';
 import { Image } from './image.dto';
 
@@ -47,4 +53,10 @@ export class Subcategory extends Document {
 
   @IsArray()
   aviableColors: string[];
+
+  @IsBoolean()
+  soldOut: boolean;
+
+  @IsDate()
+  createdAt: Date;
 }
