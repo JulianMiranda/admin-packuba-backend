@@ -144,6 +144,16 @@ const checkPriceProps = (data: Partial<Price>): Partial<Price> => {
     'eigthkgPrice',
     'ninekgPrice',
     'tenkgPrice',
+    'elevenkgPrice',
+    'twelvekgPrice',
+    'thirteenkgPrice',
+    'fourteenkgPrice',
+    'fifteenkgPrice',
+    'sixteenkgPrice',
+    'seventeenkgPrice',
+    'eighteenkgPrice',
+    'nineteenkgPrice',
+    'twentykgPrice',
   ];
   checkProps(props, Object.keys(data));
   return data;
