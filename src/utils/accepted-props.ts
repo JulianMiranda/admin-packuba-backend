@@ -134,6 +134,7 @@ const checkPriceProps = (data: Partial<Price>): Partial<Price> => {
   const props = [
     'mlc',
     'mn',
+    'rate',
     'oneandhalfkgPrice',
     'twokgPrice',
     'threekgPrice',

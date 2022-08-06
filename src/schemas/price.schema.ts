@@ -5,6 +5,7 @@ export const PriceSchema = new mongoose.Schema(
   {
     mlc: { type: Number, default: 125 },
     mn: { type: Number, default: 100 },
+    rate: { type: Number, default: 100 },
     oneandhalfkgPrice: { type: Number, default: 21 },
     twokgPrice: { type: Number, default: 25 },
     threekgPrice: { type: Number, default: 30 },
