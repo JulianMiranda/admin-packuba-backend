@@ -14,6 +14,7 @@ export const PriceSchema = new mongoose.Schema(
     sixkgPrice: { type: Number, default: 52 },
     sevenkgPrice: { type: Number, default: 58 },
     eightkgPrice: { type: Number, default: 61 },
+    eigthkgPrice: { type: Number, default: 61 },
     ninekgPrice: { type: Number, default: 70 },
     tenkgPrice: { type: Number, default: 80 },
     elevenkgPrice: { type: Number, default: 88 },
