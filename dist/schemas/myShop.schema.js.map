@@ -1,0 +1,1 @@
+{"version":3,"file":"myShop.schema.js","sourceRoot":"","sources":["../../src/schemas/myShop.schema.ts"],"names":[],"mappings":";;;AAAA,qCAAqC;AACrC,0CAA+C;AAElC,QAAA,YAAY,GAAG,IAAI,QAAQ,CAAC,MAAM,CAC7C;IACE,IAAI,EAAE,EAAE,IAAI,EAAE,QAAQ,CAAC,MAAM,CAAC,KAAK,CAAC,QAAQ,EAAE,GAAG,EAAE,MAAM,EAAE,KAAK,EAAE,IAAI,EAAE;IACxE,GAAG,EAAE,EAAE;CAWR,oBACI,qBAAa,EACnB,CAAC"}

@@ -1,0 +1,13 @@
+export declare const PORT: string | number;
+export declare const MONGO_CONNECTION: string;
+export declare const Alp = "src/utils/parent-cats.json";
+export declare const GOOGLE_APPLICATION_CREDENTIALS: string;
+export declare const DEFAULT_API_WELCOME_MESSAGE: string;
+export declare const MAPBOX_API_KEY: string;
+export declare const SENDGRID_API_KEY: string;
+export declare const SENDGRID_TEMPL_ID: string;
+export declare const AWS_API_VERSION: string;
+export declare const AWS_ACCESS_KEY_ID: string;
+export declare const AWS_SECRET_ACCESS_KEY: string;
+export declare const AWS_REGION: string;
+export declare const AWS_ARN: string;
