@@ -112,6 +112,7 @@ export class SubcategoryRepository {
     images: Array<Partial<Image>>,
   ): Promise<boolean> {
     try {
+      data.recentProduct = new Date();
       const newSubcategory = new this.subcategoryDb(data);
       if (!images) {
         const subcategory = await newSubcategory.save();

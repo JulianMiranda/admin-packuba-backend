@@ -96,6 +96,7 @@ let SubcategoryRepository = class SubcategoryRepository {
     }
     async create(data, images) {
         try {
+            data.recentProduct = new Date();
             const newSubcategory = new this.subcategoryDb(data);
             if (!images) {
                 const subcategory = await newSubcategory.save();

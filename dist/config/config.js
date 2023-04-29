@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AWS_ARN = exports.AWS_REGION = exports.AWS_SECRET_ACCESS_KEY = exports.AWS_ACCESS_KEY_ID = exports.AWS_API_VERSION = exports.SENDGRID_TEMPL_ID = exports.SENDGRID_API_KEY = exports.MAPBOX_API_KEY = exports.DEFAULT_API_WELCOME_MESSAGE = exports.GOOGLE_APPLICATION_CREDENTIALS = exports.Alp = exports.MONGO_CONNECTION = exports.PORT = void 0;
-exports.PORT = process.env.PORT || 5001;
+exports.PORT = process.env.PORT || 3000;
 exports.MONGO_CONNECTION = process.env.MONGO_CONNECTION ||
     'mongodb+srv://tyto:5epXXvk0yxBqkk7c@cluster0.9jous.mongodb.net/packuba';
 exports.Alp = 'src/utils/parent-cats.json';

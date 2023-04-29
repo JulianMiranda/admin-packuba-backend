@@ -59,4 +59,7 @@ export class Subcategory extends Document {
 
   @IsDate()
   createdAt: Date;
+
+  @IsDate()
+  recentProduct: Date;
 }

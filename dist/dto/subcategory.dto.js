@@ -82,5 +82,9 @@ __decorate([
     class_validator_1.IsDate(),
     __metadata("design:type", Date)
 ], Subcategory.prototype, "createdAt", void 0);
+__decorate([
+    class_validator_1.IsDate(),
+    __metadata("design:type", Date)
+], Subcategory.prototype, "recentProduct", void 0);
 exports.Subcategory = Subcategory;
 //# sourceMappingURL=subcategory.dto.js.map

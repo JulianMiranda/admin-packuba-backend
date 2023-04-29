@@ -18,4 +18,5 @@ export declare class Subcategory extends Document {
     aviableColors: string[];
     soldOut: boolean;
     createdAt: Date;
+    recentProduct: Date;
 }

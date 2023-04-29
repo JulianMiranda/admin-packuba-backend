@@ -1527,7 +1527,7 @@
         "affectsGlobalScope": false
       },
       "../src/config/config.ts": {
-        "version": "e58fc16ee056243f60ed3276c51138503d451d39fdc1ff275d5411a15e3f798c",
+        "version": "914450666c236a84309b223056deba479a16eedab939a3451faaf8314fa74e3c",
         "signature": "8fac8ff263720d15472b161bcc12e1118479b53249b370beffabf52914997877",
         "affectsGlobalScope": false
       },
@@ -3612,8 +3612,8 @@
         "affectsGlobalScope": false
       },
       "../src/dto/subcategory.dto.ts": {
-        "version": "033001c3829467bbf18c5767e4cdd8af7db04a445f56896e9b03604377beb9ac",
-        "signature": "8f87ecd084d14dd79df3a4b74af60e18a555997365a6957066e7f1a043fb5a96",
+        "version": "d3606b51bf455a68aa311a738bdd24c6b0d8ad5e0fed62aec515934b8101fed4",
+        "signature": "1559f7ae0f803f3f25969652d668f83a7a309af8d4eb0921f030c72c606a14cb",
         "affectsGlobalScope": false
       },
       "../src/enums/entity.enum.ts": {
@@ -5567,7 +5567,7 @@
         "affectsGlobalScope": false
       },
       "../src/modules/subcategory/subcategory.repository.ts": {
-        "version": "9e3942e19f39fdd87c851f5a965a6e5618282583dd330745d1ed69ea6f5321dc",
+        "version": "aff893218947c91341591bca9cffcc1e6ae3241e8697e462b49200db8f3011cd",
         "signature": "cb12bf4027be600e41a575ffb131997a40f8e6274dfb834ce361fecd49ccb4c0",
         "affectsGlobalScope": false
       },
