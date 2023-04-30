@@ -114,6 +114,7 @@ const checkPriceProps = (data) => {
         'mlc',
         'mn',
         'rate',
+        'ratemlc',
         'oneandhalfkgPrice',
         'twokgPrice',
         'threekgPrice',

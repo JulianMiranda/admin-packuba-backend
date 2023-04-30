@@ -62,4 +62,7 @@ export class Subcategory extends Document {
 
   @IsDate()
   recentProduct: Date;
+
+  @IsArray()
+  info: string[];
 }

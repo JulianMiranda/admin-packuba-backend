@@ -59,12 +59,17 @@ export class SubcategoryController {
   }
   @UseGuards(AuthenticationGuard)
   @Get('/setPrice')
-  setPrice(): Promise<Boolean> {
+  setPrice(): Promise<boolean> {
     return this.subcategoryRepository.setPrice();
   }
 
   @Get('/getProduct/:id')
   getProduct(@Param('id') id: string): Promise<Subcategory> {
     return this.subcategoryRepository.getProduct(id);
+  }
+
+  @Get('/searchTextSearch')
+  searchTextSearch(): Promise<void> {
+    return this.subcategoryRepository.searchTextSearch();
   }
 }

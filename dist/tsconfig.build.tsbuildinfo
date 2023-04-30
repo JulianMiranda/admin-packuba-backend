@@ -1527,7 +1527,7 @@
         "affectsGlobalScope": false
       },
       "../src/config/config.ts": {
-        "version": "914450666c236a84309b223056deba479a16eedab939a3451faaf8314fa74e3c",
+        "version": "e58fc16ee056243f60ed3276c51138503d451d39fdc1ff275d5411a15e3f798c",
         "signature": "8fac8ff263720d15472b161bcc12e1118479b53249b370beffabf52914997877",
         "affectsGlobalScope": false
       },
@@ -3612,8 +3612,8 @@
         "affectsGlobalScope": false
       },
       "../src/dto/subcategory.dto.ts": {
-        "version": "d3606b51bf455a68aa311a738bdd24c6b0d8ad5e0fed62aec515934b8101fed4",
-        "signature": "1559f7ae0f803f3f25969652d668f83a7a309af8d4eb0921f030c72c606a14cb",
+        "version": "1a13a99491244595c5d3437e860b8cfb278aded8b1b5d576e4c777f5dbc3242d",
+        "signature": "36843a87244365913c101d1a11314687c1beedaf685d9e02f2f20d8a750e9816",
         "affectsGlobalScope": false
       },
       "../src/enums/entity.enum.ts": {
@@ -3637,8 +3637,8 @@
         "affectsGlobalScope": false
       },
       "../src/dto/price.dto.ts": {
-        "version": "2ee1329805827611443fa2ab7c209ae6b9592d23dfaa96f223fa894066824867",
-        "signature": "4d1652f3ab298fbcae5acb3dcad5c3d214f3a31791576d0a4040141c2da96212",
+        "version": "c941817e18649e53f253b03b8960ad06171c82a5c395bef3e4fb1a2eec9f2090",
+        "signature": "8454eabf390b6bf1c6c967cb354b0100f5f4799c9306edc18a5ef1647870444a",
         "affectsGlobalScope": false
       },
       "../src/dto/carnet.dto.ts": {
@@ -3652,7 +3652,7 @@
         "affectsGlobalScope": false
       },
       "../src/utils/accepted-props.ts": {
-        "version": "0b99c07f102d1de8e091e271a5cd8305e0a5a5f4fc16bce524b6ad75ba655aed",
+        "version": "f589883bfd586a61de1aff1ee600a66018ba7052d06104d0414eeefd01cb4fc0",
         "signature": "3d50c06ee8117c87ae01f3c7973f5154f98d1b47d5d6e0b26be99199d9515d2b",
         "affectsGlobalScope": false
       },
@@ -5566,18 +5566,23 @@
         "signature": "b6b12f88e2bf558ab60b0a39d0f719b7213f178858861bd9880b12d83376f53a",
         "affectsGlobalScope": false
       },
+      "../src/modules/subcategory/searctext.aggregation.ts": {
+        "version": "be6e74f0862bf1c26832744f9bd4c4f49ef6e79b333fd0acafd2d41a1723f30c",
+        "signature": "3023c6c3e75db9ba82aecf033789e79332d1fbd4ab1005dc6e9b14695e65adcb",
+        "affectsGlobalScope": false
+      },
       "../src/modules/subcategory/subcategory.repository.ts": {
-        "version": "aff893218947c91341591bca9cffcc1e6ae3241e8697e462b49200db8f3011cd",
-        "signature": "cb12bf4027be600e41a575ffb131997a40f8e6274dfb834ce361fecd49ccb4c0",
+        "version": "956c4a4c8dcdd40b91a901449a2cb8b3828f6ea99e40e0f058ddea78a7bd346f",
+        "signature": "98bb645602925ec0741c0b94ac90ba285bd7210ebe0a98024711387d4c38c2cd",
         "affectsGlobalScope": false
       },
       "../src/modules/subcategory/subcategory.controller.ts": {
-        "version": "a1731bc22f9853a560b881615638e5a1e40fcb981def337ff208b490f52aa0fc",
-        "signature": "1ae3a1b6499cbf71cc94568d4a312de0ee097621f003e884d6a7f3c44e9b6d2e",
+        "version": "54cfddba76ecffe26d972e4ab69737c4b22218c6e4dc5dd0f4e24af0d92b38e3",
+        "signature": "179ecc815ca35ede02eed36577fc2bfa65122a09960994e8ea8bdac0b13cdb18",
         "affectsGlobalScope": false
       },
       "../src/schemas/subcategory.schema.ts": {
-        "version": "d13703a8b6304c83c3ab9f0660ce744ba89811960ac5df1b8e1dd80c43dfa62a",
+        "version": "a98551bdb828ad0fb09904947f04002a74920fc7dee6ecd51bf1cbd74fbc5199",
         "signature": "6f4fa815ebee03202b0abc2f592cfb489df119c8dfee5a275bb7d9108b41e3a5",
         "affectsGlobalScope": false
       },
@@ -5757,7 +5762,7 @@
         "affectsGlobalScope": false
       },
       "../src/schemas/price.schema.ts": {
-        "version": "168310ab969bef83377889f95ae327295ee82274ba07082ba0c653e8afd36607",
+        "version": "5b48a29860e91603e94fc47d9931b0938da6a41c11d5abf3e4e9e592248f591f",
         "signature": "e650f598ee5932f036e383cae2db4eb69e3bccccefa2b81ed7d0834db5fce68e",
         "affectsGlobalScope": false
       },
@@ -12864,6 +12869,9 @@
         "../src/modules/image/image.repository.ts",
         "../src/modules/shop/my-shop.aggregate.ts"
       ],
+      "../src/modules/subcategory/searctext.aggregation.ts": [
+        "../node_modules/mongoose/index.d.ts"
+      ],
       "../src/modules/subcategory/subcategory.controller.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
         "../src/dto/mongo-query.dto.ts",
@@ -12894,7 +12902,8 @@
         "../src/dto/subcategory.dto.ts",
         "../src/enums/entity.enum.ts",
         "../src/modules/image/image.repository.ts",
-        "../src/modules/notifications/notifications.repository.ts"
+        "../src/modules/notifications/notifications.repository.ts",
+        "../src/modules/subcategory/searctext.aggregation.ts"
       ],
       "../src/modules/user/set-notificationtoken.ts": [
         "../node_modules/mongoose/index.d.ts"
@@ -19314,6 +19323,9 @@
         "../src/dto/my-shop.dto.ts",
         "../src/enums/entity.enum.ts"
       ],
+      "../src/modules/subcategory/searctext.aggregation.ts": [
+        "../node_modules/mongoose/index.d.ts"
+      ],
       "../src/modules/subcategory/subcategory.controller.ts": [
         "../src/dto/mongo-query.dto.ts",
         "../src/dto/subcategory.dto.ts",
@@ -20639,6 +20651,7 @@
       "../src/modules/shop/shop.controller.ts",
       "../src/modules/shop/shop.module.ts",
       "../src/modules/shop/shop.repository.ts",
+      "../src/modules/subcategory/searctext.aggregation.ts",
       "../src/modules/subcategory/subcategory.controller.ts",
       "../src/modules/subcategory/subcategory.module.ts",
       "../src/modules/subcategory/subcategory.repository.ts",

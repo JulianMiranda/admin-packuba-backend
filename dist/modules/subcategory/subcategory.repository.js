@@ -19,6 +19,7 @@ const mongoose_2 = require("mongoose");
 const entity_enum_1 = require("../../enums/entity.enum");
 const image_repository_1 = require("../image/image.repository");
 const notifications_repository_1 = require("../notifications/notifications.repository");
+const searcText_aggregation_1 = require("./searcText.aggregation");
 let SubcategoryRepository = class SubcategoryRepository {
     constructor(subcategoryDb, imageRepository, notificationsRepository) {
         this.subcategoryDb = subcategoryDb;
@@ -111,6 +112,7 @@ let SubcategoryRepository = class SubcategoryRepository {
                 });
                 const imageModel = await this.imageRepository.insertImages(createImages);
                 const newImages = imageModel.map((doc) => doc._id);
+                await this.setTextSearch(document._id);
                 const subcategory = await this.subcategoryDb.findOneAndUpdate({ _id: document._id }, { images: newImages }, { new: true });
                 if (subcategory) {
                     this.notificationsRepository.createdProduct(subcategory);
@@ -171,6 +173,14 @@ let SubcategoryRepository = class SubcategoryRepository {
                 this.notificationsRepository.finishSoldOut(document);
                 await this.subcategoryDb.findOneAndUpdate({ _id: id }, { recentProduct: new Date() }, { new: true });
             }
+            if (data.name ||
+                data.price ||
+                data.priceGalore ||
+                data.priceGaloreDiscount ||
+                data.priceDiscount ||
+                data.description ||
+                data.info)
+                await this.setTextSearch(id);
             return !!document;
         }
         catch (e) {
@@ -207,6 +217,69 @@ let SubcategoryRepository = class SubcategoryRepository {
                 throw e;
             throw new common_1.InternalServerErrorException('deleteSubcategory Database error', e);
         }
+    }
+    async searchTextSearch() {
+        try {
+            const document = await this.subcategoryDb.find({});
+            document.map(async (category) => await this.setTextSearch(category._id));
+            console.log('Finished');
+            if (!document)
+                throw new common_1.NotFoundException(`Could not set Search all`);
+        }
+        catch (e) {
+            if (e.status === 404)
+                throw e;
+            throw new common_1.InternalServerErrorException('deleteSubcategory Database error', e);
+        }
+    }
+    async setTextSearch(id) {
+        const categoryQuery = await this.subcategoryDb.aggregate(searcText_aggregation_1.searchText(id));
+        if (categoryQuery.length === 0)
+            return;
+        const texto = this.findTilde(categoryQuery[0].textSearch);
+        await this.subcategoryDb.bulkWrite(categoryQuery.map(({ _id, textSearch }) => ({
+            updateOne: {
+                filter: { _id },
+                update: {
+                    $set: { textSearch: texto },
+                },
+            },
+        })));
+    }
+    findTilde(a) {
+        const b = a.split(' ');
+        const newWords = [];
+        b.map((word) => {
+            for (let i = 0; i < word.length; i++) {
+                const caracter = word.charAt(i);
+                if (caracter === 'á' || caracter === 'Á') {
+                    const re = /Á/gi;
+                    newWords.push(word.replace(re, 'a'));
+                }
+                else if (caracter === 'é' || caracter === 'É') {
+                    const re = /É/gi;
+                    newWords.push(word.replace(re, 'e'));
+                }
+                else if (caracter === 'í' || caracter === 'Í') {
+                    console.log('Hay caracter: ' + word);
+                    const re = /Í/gi;
+                    newWords.push(word.replace(re, 'i'));
+                }
+                else if (caracter === 'ó' || caracter === 'Ó') {
+                    const re = /Ó/gi;
+                    newWords.push(word.replace(re, 'o'));
+                }
+                else if (caracter === 'ú' || caracter === 'Ú') {
+                    const re = /Ú/gi;
+                    newWords.push(word.replace(re, 'u'));
+                }
+                else {
+                    if (!newWords.includes(word))
+                        newWords.push(word);
+                }
+            }
+        });
+        return newWords.join(' ');
     }
 };
 SubcategoryRepository = __decorate([

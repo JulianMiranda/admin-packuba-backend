@@ -19,4 +19,5 @@ export declare class Subcategory extends Document {
     soldOut: boolean;
     createdAt: Date;
     recentProduct: Date;
+    info: string[];
 }

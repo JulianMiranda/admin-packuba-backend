@@ -2,6 +2,8 @@ import { Document } from 'mongoose';
 export declare class Price extends Document {
     mlc: number;
     mn: number;
+    rate: number;
+    ratemlc: number;
     oneandhalfkgPrice: number;
     twokgPrice: number;
     threekgPrice: number;

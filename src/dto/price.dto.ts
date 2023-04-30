@@ -9,6 +9,12 @@ export class Price extends Document {
   mn: number;
 
   @IsNumber()
+  rate: number;
+
+  @IsNumber()
+  ratemlc: number;
+
+  @IsNumber()
   oneandhalfkgPrice: number;
 
   @IsNumber()

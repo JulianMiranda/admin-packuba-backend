@@ -52,6 +52,9 @@ let SubcategoryController = class SubcategoryController {
     getProduct(id) {
         return this.subcategoryRepository.getProduct(id);
     }
+    searchTextSearch() {
+        return this.subcategoryRepository.searchTextSearch();
+    }
 };
 __decorate([
     common_1.Post('/getList'),
@@ -110,6 +113,12 @@ __decorate([
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
 ], SubcategoryController.prototype, "getProduct", null);
+__decorate([
+    common_1.Get('/searchTextSearch'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Promise)
+], SubcategoryController.prototype, "searchTextSearch", null);
 SubcategoryController = __decorate([
     common_1.Controller(entity_enum_1.ENTITY.SUBCATEGORY),
     __metadata("design:paramtypes", [subcategory_repository_1.SubcategoryRepository])

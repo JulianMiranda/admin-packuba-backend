@@ -25,6 +25,14 @@ __decorate([
 __decorate([
     class_validator_1.IsNumber(),
     __metadata("design:type", Number)
+], Price.prototype, "rate", void 0);
+__decorate([
+    class_validator_1.IsNumber(),
+    __metadata("design:type", Number)
+], Price.prototype, "ratemlc", void 0);
+__decorate([
+    class_validator_1.IsNumber(),
+    __metadata("design:type", Number)
 ], Price.prototype, "oneandhalfkgPrice", void 0);
 __decorate([
     class_validator_1.IsNumber(),

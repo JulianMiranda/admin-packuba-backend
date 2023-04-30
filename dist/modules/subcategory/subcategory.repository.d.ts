@@ -18,4 +18,7 @@ export declare class SubcategoryRepository {
     update(id: string, data: Partial<Subcategory>, images: Array<Partial<Image>>, deleteImages: string[]): Promise<boolean>;
     delete(id: string): Promise<boolean>;
     setPrice(): Promise<boolean>;
+    searchTextSearch(): Promise<void>;
+    setTextSearch(id: string): Promise<void>;
+    findTilde(a: string): any;
 }

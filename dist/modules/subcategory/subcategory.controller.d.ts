@@ -9,6 +9,7 @@ export declare class SubcategoryController {
     create(data: Subcategory): Promise<boolean>;
     update(id: string, data: Partial<Subcategory>): Promise<boolean>;
     delete(id: string): Promise<boolean>;
-    setPrice(): Promise<Boolean>;
+    setPrice(): Promise<boolean>;
     getProduct(id: string): Promise<Subcategory>;
+    searchTextSearch(): Promise<void>;
 }

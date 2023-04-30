@@ -10,6 +10,7 @@ const SubcategorySchema = new mongoose.Schema({
         index: true,
         ref: 'Category',
     },
+    textSearch: { type: String, index: true },
     cost: { type: Number, default: 0 },
     price: { type: Number, default: 0 },
     priceGalore: { type: Number, default: 0 },
@@ -26,5 +27,6 @@ const SubcategorySchema = new mongoose.Schema({
     recentProduct: { type: Date, default: new Date(), index: true },
 }, Object.assign({}, index_1.schemaOptions));
 SubcategorySchema.index({ name: 'text' });
+SubcategorySchema.index({ textSearch: 'text' });
 exports.default = SubcategorySchema;
 //# sourceMappingURL=subcategory.schema.js.map
