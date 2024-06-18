@@ -25,6 +25,7 @@ async function bootstrap() {
   /* app.use(csurf()); */
 
   await app.listen(PORT);
+  console.log('Git');
   console.log('Web Server Packuba listening on port: ', PORT);
   console.log('Database Server connection string: ', MONGO_CONNECTION);
   FirebaseService.init();
